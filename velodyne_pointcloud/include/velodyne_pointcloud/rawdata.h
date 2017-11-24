@@ -90,7 +90,7 @@ namespace velodyne_rawdata
 
   static const int PACKET_SIZE = 1206;
   static const int BLOCKS_PER_PACKET = 12;
-  static const int PACKET_STATUS_SIZE = 4;
+  static const int PACKET_STATUS_SIZE = 2;
   static const int SCANS_PER_PACKET = (SCANS_PER_BLOCK * BLOCKS_PER_PACKET);
 
   /** \brief Raw Velodyne packet.
@@ -108,7 +108,7 @@ namespace velodyne_rawdata
   typedef struct raw_packet
   {
     raw_block_t blocks[BLOCKS_PER_PACKET];
-    uint16_t revolution;
+    uint32_t gps_timestamp;
     uint8_t status[PACKET_STATUS_SIZE]; 
   } raw_packet_t;
 

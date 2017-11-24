@@ -297,6 +297,8 @@ namespace velodyne_rawdata
             point.y = y_coord;
             point.z = z_coord;
             point.intensity = intensity;
+
+            point.timestamp = raw->gps_timestamp + i * 46.08 + j * 1.152 - 542.592;
   
             // append this point to the cloud
             pc.points.push_back(point);
