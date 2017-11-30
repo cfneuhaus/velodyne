@@ -18,7 +18,7 @@
   <arg name="rpm" default="600.0" />
   <arg name="laserscan_ring" default="-1" />
   <arg name="laserscan_resolution" default="0.007" />
-  <arg name="cut_angle" default="180.0" />
+  <arg name="cut_angle" default="90" />
 
   <!-- start nodelet manager and driver nodelets -->
   <include file="$(find velodyne_driver)/launch/nodelet_manager.launch">
