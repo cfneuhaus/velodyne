@@ -42,12 +42,14 @@
     <arg name="max_range" value="$(arg max_range)"/>
     <arg name="min_range" value="$(arg min_range)"/>
   </include>
-
+  
   <!-- start laserscan nodelet -->
   <include file="$(find velodyne_pointcloud)/launch/laserscan_nodelet.launch">
     <arg name="manager" value="$(arg manager)" />
     <arg name="ring" value="$(arg laserscan_ring)"/>
     <arg name="resolution" value="$(arg laserscan_resolution)"/>
   </include>
+
+  <node pkg="velodyne_gps_imu" name="velodyne_gps_imu" type="gpsimu_driver" output="screen"> </node>
 
 </launch>
