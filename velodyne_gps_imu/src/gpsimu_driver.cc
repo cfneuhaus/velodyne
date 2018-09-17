@@ -171,20 +171,20 @@ bool GpsImuDriver::handlePacket(velodyne_packet_structs::VelodynePositioningPack
   const float earth_gravity = 9.80665;
 
   vpp.gps_timestamp = vppr.gps_timestamp * microseconds_to_seconds;
-  vpp.gyro_temp_accel_xyz[0].gyro = vpp.gyro_temp_accel[1].gyro;
-  vpp.gyro_temp_accel_xyz[0].temp = vpp.gyro_temp_accel[1].temp;
-  vpp.gyro_temp_accel_xyz[0].accel_x = -vpp.gyro_temp_accel[0].accel_y * earth_gravity;
-  vpp.gyro_temp_accel_xyz[0].accel_y = vpp.gyro_temp_accel[2].accel_x * earth_gravity;
+  vpp.gyro_temp_accel_xyz[0].gyro = vpp.gyro_temp_accel[0].gyro;
+  vpp.gyro_temp_accel_xyz[0].temp = vpp.gyro_temp_accel[0].temp;
+  vpp.gyro_temp_accel_xyz[0].accel_x = -vpp.gyro_temp_accel[1].accel_y * earth_gravity;
+  vpp.gyro_temp_accel_xyz[0].accel_y = -vpp.gyro_temp_accel[2].accel_y * earth_gravity;
 
-  vpp.gyro_temp_accel_xyz[1].gyro = -vpp.gyro_temp_accel[0].gyro;
-  vpp.gyro_temp_accel_xyz[1].temp = vpp.gyro_temp_accel[0].temp;
-  vpp.gyro_temp_accel_xyz[1].accel_x = -vpp.gyro_temp_accel[1].accel_y * earth_gravity;
-  vpp.gyro_temp_accel_xyz[1].accel_y = -vpp.gyro_temp_accel[2].accel_y * earth_gravity;
+  vpp.gyro_temp_accel_xyz[1].gyro = vpp.gyro_temp_accel[1].gyro;
+  vpp.gyro_temp_accel_xyz[1].temp = vpp.gyro_temp_accel[1].temp;
+  vpp.gyro_temp_accel_xyz[1].accel_x = vpp.gyro_temp_accel[0].accel_y * earth_gravity;
+  vpp.gyro_temp_accel_xyz[1].accel_y = -vpp.gyro_temp_accel[2].accel_x * earth_gravity;
 
-  vpp.gyro_temp_accel_xyz[2].gyro = -vpp.gyro_temp_accel[2].gyro;
+  vpp.gyro_temp_accel_xyz[2].gyro = vpp.gyro_temp_accel[2].gyro;
   vpp.gyro_temp_accel_xyz[2].temp = vpp.gyro_temp_accel[2].temp;
-  vpp.gyro_temp_accel_xyz[2].accel_x = -vpp.gyro_temp_accel[0].accel_x * earth_gravity;
-  vpp.gyro_temp_accel_xyz[2].accel_y = -vpp.gyro_temp_accel[1].accel_x * earth_gravity;
+  vpp.gyro_temp_accel_xyz[2].accel_x = vpp.gyro_temp_accel[0].accel_x * earth_gravity;
+  vpp.gyro_temp_accel_xyz[2].accel_y = vpp.gyro_temp_accel[1].accel_x * earth_gravity;
 
   nmea_msgs::Sentence nmea_sentence_msg;
   std::string nmea_sentence(vppr.nmea_sentence);
